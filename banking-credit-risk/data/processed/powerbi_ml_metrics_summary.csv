@@ -1,0 +1,4 @@
+Model_ID,Model_Name,Is_Champion,Train_CV_PR_AUC_Mean,Train_CV_PR_AUC_Std,Train_CV_ROC_AUC_Mean,Train_CV_ROC_AUC_Std,Test_PR_AUC,Test_ROC_AUC,Test_Accuracy_050,Test_Precision_050,Test_Recall_050,Test_F1_050,Test_Brier_Score,Test_Log_Loss
+Logistic_Regression,Logistic Regression,No,0.521,0.0137,0.7719,0.0078,0.5135,0.7592,0.7532,0.456,0.6014,0.5187,0.1884,0.5693
+Random_Forest,Random Forest,No,0.5583,0.0044,0.7843,0.0055,0.5566,0.776,0.7918,0.5282,0.5501,0.5389,0.1607,0.4974
+Hist_Gradient_Boosting,Hist Gradient Boosting (Champion),Yes,0.5607,0.0067,0.7836,0.006,0.5549,0.7794,0.7582,0.4656,0.6323,0.5363,0.1776,0.5375

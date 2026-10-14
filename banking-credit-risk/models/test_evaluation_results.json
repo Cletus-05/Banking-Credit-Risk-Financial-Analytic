@@ -1,0 +1,98 @@
+{
+  "test_size": 6000,
+  "test_default_count": 1327,
+  "test_non_default_count": 4673,
+  "test_default_rate": 0.22116666666666668,
+  "champion_model": "Hist_Gradient_Boosting",
+  "optimal_threshold": 0.56,
+  "all_models_test_metrics": {
+    "Logistic_Regression": {
+      "PR_AUC": 0.5135457813211248,
+      "ROC_AUC": 0.7592164321292242,
+      "Accuracy_0.50": 0.7531666666666667,
+      "Precision_0.50": 0.456,
+      "Recall_0.50": 0.6013564431047476,
+      "F1_0.50": 0.5186870328241794,
+      "Brier_Score": 0.18842072129792536,
+      "Log_Loss": 0.5693086723854373
+    },
+    "Random_Forest": {
+      "PR_AUC": 0.5566481707039169,
+      "ROC_AUC": 0.7759915988705822,
+      "Accuracy_0.50": 0.7918333333333333,
+      "Precision_0.50": 0.5282199710564399,
+      "Recall_0.50": 0.5501130369253956,
+      "F1_0.50": 0.5389442598744925,
+      "Brier_Score": 0.16070537430557894,
+      "Log_Loss": 0.4974377297033498
+    },
+    "Hist_Gradient_Boosting": {
+      "PR_AUC": 0.554908322762621,
+      "ROC_AUC": 0.7793664191234062,
+      "Accuracy_0.50": 0.7581666666666667,
+      "Precision_0.50": 0.4655937846836848,
+      "Recall_0.50": 0.6322532027128862,
+      "F1_0.50": 0.5362735698306168,
+      "Brier_Score": 0.17759461187471645,
+      "Log_Loss": 0.537541385136587
+    }
+  },
+  "champion_threshold_analysis": {
+    "High_Recall (0.40)": {
+      "Threshold": 0.4,
+      "Accuracy": 0.669,
+      "Precision": 0.374188621611302,
+      "Recall": 0.7385079125847777,
+      "F1_Score": 0.496705524581855,
+      "TN": 3034,
+      "FP": 1639,
+      "FN": 347,
+      "TP": 980,
+      "Illustrative_Total_Cost_NTD": 14169750,
+      "Illustrative_Cost_Savings_NTD": 30616500,
+      "Illustrative_Savings_Pct": 68.36138323704262
+    },
+    "Default_Cutoff (0.50)": {
+      "Threshold": 0.5,
+      "Accuracy": 0.7581666666666667,
+      "Precision": 0.4655937846836848,
+      "Recall": 0.6322532027128862,
+      "F1_Score": 0.5362735698306168,
+      "TN": 3710,
+      "FP": 963,
+      "FN": 488,
+      "TP": 839,
+      "Illustrative_Total_Cost_NTD": 17914500,
+      "Illustrative_Cost_Savings_NTD": 26871750,
+      "Illustrative_Savings_Pct": 60.0
+    },
+    "Optimal_F1 (0.56)": {
+      "Threshold": 0.56,
+      "Accuracy": 0.7881666666666667,
+      "Precision": 0.518918918918919,
+      "Recall": 0.5787490580256217,
+      "F1_Score": 0.5472034200213751,
+      "TN": 3961,
+      "FP": 712,
+      "FN": 559,
+      "TP": 768,
+      "Illustrative_Total_Cost_NTD": 19934250,
+      "Illustrative_Cost_Savings_NTD": 24852000,
+      "Illustrative_Savings_Pct": 55.490245331993634
+    },
+    "High_Precision (0.70)": {
+      "Threshold": 0.7,
+      "Accuracy": 0.8181666666666667,
+      "Precision": 0.630242825607064,
+      "Recall": 0.43029389600602863,
+      "F1_Score": 0.5114196148678908,
+      "TN": 4338,
+      "FP": 335,
+      "FN": 756,
+      "TP": 571,
+      "Illustrative_Total_Cost_NTD": 26017500,
+      "Illustrative_Cost_Savings_NTD": 18768750,
+      "Illustrative_Savings_Pct": 41.90739345223143
+    }
+  }
+}

@@ -1,0 +1,5 @@
+Policy_Name,Threshold,Is_Optimal_F1,Accuracy,Precision,Recall,F1_Score,True_Negatives_TN,False_Positives_FP,False_Negatives_FN,True_Positives_TP,Illustrative_Total_Cost_NTD,Illustrative_Cost_Savings_NTD,Illustrative_Savings_Pct
+High_Recall (0.40),0.4,No,0.669,0.3742,0.7385,0.4967,3034,1639,347,980,14169750,30616500,68.36
+Default_Cutoff (0.50),0.5,No,0.7582,0.4656,0.6323,0.5363,3710,963,488,839,17914500,26871750,60.0
+Optimal_F1 (0.56),0.56,Yes,0.7882,0.5189,0.5787,0.5472,3961,712,559,768,19934250,24852000,55.49
+High_Precision (0.70),0.7,No,0.8182,0.6302,0.4303,0.5114,4338,335,756,571,26017500,18768750,41.91

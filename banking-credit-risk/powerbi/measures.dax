@@ -1,0 +1,129 @@
+﻿// ==============================================================================
+// BANKING CREDIT RISK & FINANCIAL ANALYTICS — POWER BI DAX MEASURES LIBRARY
+// ==============================================================================
+
+// ------------------------------------------------------------------------------
+// 1. PORTFOLIO VOLUME & EXPOSURE MEASURES (Page 1 & 2)
+// ------------------------------------------------------------------------------
+
+[Total Customers] = 
+COUNTROWS(Fact_Credit_Clients)
+
+[Total Defaulted Customers] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[DEFAULT] = 1
+)
+
+[Total Non-Default Customers] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[DEFAULT] = 0
+)
+
+[Portfolio Default Rate] = 
+DIVIDE([Total Defaulted Customers], [Total Customers], 0)
+
+[Total Credit Limit Exposure] = 
+SUM(Fact_Credit_Clients[LIMIT_BAL])
+
+[Average Credit Limit] = 
+AVERAGE(Fact_Credit_Clients[LIMIT_BAL])
+
+[Average Statement Balance] = 
+AVERAGE(Fact_Credit_Clients[AVG_BILL_AMT])
+
+[Average Monthly Payment] = 
+AVERAGE(Fact_Credit_Clients[AVG_PAY_AMT])
+
+[Average Credit Utilisation] = 
+AVERAGE(Fact_Credit_Clients[AVG_UTIL])
+
+[Average Payment-to-Bill Ratio] = 
+AVERAGE(Fact_Credit_Clients[PAY_TO_BILL_1])
+
+
+// ------------------------------------------------------------------------------
+// 2. DELINQUENCY & RISK SEGMENT MEASURES (Page 2 & 3)
+// ------------------------------------------------------------------------------
+
+[Active Delinquent Accounts] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[RECENT_DELAY] = 1
+)
+
+[Active Delinquency Rate] = 
+DIVIDE([Active Delinquent Accounts], [Total Customers], 0)
+
+[Multi-Month Delayed Accounts] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[CONSEC_DELAY] = 1
+)
+
+[Over-Limit Accounts] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[OVER_LIMIT_FLAG] = 1
+)
+
+[Over-Limit Rate] = 
+DIVIDE([Over-Limit Accounts], [Total Customers], 0)
+
+
+// ------------------------------------------------------------------------------
+// 3. HOLDOUT TEST SET & ML PERFORMANCE MEASURES (Page 4 — N = 6,000 Test Set)
+// ------------------------------------------------------------------------------
+
+[Test Set Total Accounts] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[SPLIT] = "Test"
+)
+
+[Test Set Actual Defaults] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[SPLIT] = "Test",
+    Fact_Credit_Clients[DEFAULT] = 1
+)
+
+[Test Set Baseline Default Rate] = 
+DIVIDE([Test Set Actual Defaults], [Test Set Total Accounts], 0)
+
+[Test Flagged High-Risk Accounts (0.56)] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[SPLIT] = "Test",
+    Fact_Credit_Clients[FLAGGED_AT_0_56] = 1
+)
+
+[Test True Positives (0.56)] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[SPLIT] = "Test",
+    Fact_Credit_Clients[FLAGGED_AT_0_56] = 1,
+    Fact_Credit_Clients[DEFAULT] = 1
+)
+
+[Test False Positives (0.56)] = 
+CALCULATE(
+    COUNTROWS(Fact_Credit_Clients),
+    Fact_Credit_Clients[SPLIT] = "Test",
+    Fact_Credit_Clients[FLAGGED_AT_0_56] = 1,
+    Fact_Credit_Clients[DEFAULT] = 0
+)
+
+[Test Precision (0.56)] = 
+DIVIDE([Test True Positives (0.56)], [Test Flagged High-Risk Accounts (0.56)], 0)
+
+[Test Recall (0.56)] = 
+DIVIDE([Test True Positives (0.56)], [Test Set Actual Defaults], 0)
+
+[Test F1-Score (0.56)] = 
+DIVIDE(
+    2 * [Test Precision (0.56)] * [Test Recall (0.56)],
+    [Test Precision (0.56)] + [Test Recall (0.56)],
+    0
+)

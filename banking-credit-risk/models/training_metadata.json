@@ -1,0 +1,42 @@
+{
+  "champion_model": "Hist_Gradient_Boosting",
+  "random_state": 42,
+  "train_size": 24000,
+  "test_size": 6000,
+  "train_default_rate": 0.22120833333333334,
+  "test_default_rate": 0.22116666666666668,
+  "cv_results": {
+    "Logistic_Regression": {
+      "PR_AUC_Mean": 0.5209729088277563,
+      "PR_AUC_Std": 0.013700097390782142,
+      "ROC_AUC_Mean": 0.7718797683078849,
+      "ROC_AUC_Std": 0.007806555025052531,
+      "F1_Default_Mean": 0.5295101204456374,
+      "F1_Default_Std": 0.009639298829533842,
+      "Brier_Score": 0.1864470968808152,
+      "Log_Loss": 0.5659136963669588
+    },
+    "Random_Forest": {
+      "PR_AUC_Mean": 0.5583107484476157,
+      "PR_AUC_Std": 0.00437760661990853,
+      "ROC_AUC_Mean": 0.7842540842207633,
+      "ROC_AUC_Std": 0.0055226343674540735,
+      "F1_Default_Mean": 0.5443241100021453,
+      "F1_Default_Std": 0.0038707745005554105,
+      "Brier_Score": 0.1571845278518191,
+      "Log_Loss": 0.4890440777070127
+    },
+    "Hist_Gradient_Boosting": {
+      "PR_AUC_Mean": 0.5606656753601955,
+      "PR_AUC_Std": 0.006716505136672607,
+      "ROC_AUC_Mean": 0.7836006755497026,
+      "ROC_AUC_Std": 0.006034124612254777,
+      "F1_Default_Mean": 0.5395357349327533,
+      "F1_Default_Std": 0.008111594422119528,
+      "Brier_Score": 0.1761362456803362,
+      "Log_Loss": 0.5346133883261471
+    }
+  },
+  "optimal_threshold": 0.56,
+  "best_cv_f1_at_optimal_threshold": 0.5451
+}
